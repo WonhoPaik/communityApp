@@ -269,20 +269,23 @@ export default function PostDetailScreen({ route }: any) {
                         )}
                     </View>
                     {/* 작성자 + 작성일 + 내용 */}
-                    <Text style={styles.meta}>
-                        작성자: {author}
-                        {'\n'}
-                        {post.updatedAt &&
-                        post.updatedAt?.toDate &&
-                        post.updatedAt.toDate().getTime() !==
-                        post.createdAt?.toDate()?.getTime()
-                            ? `작성일: ${post.updatedAt.toDate().toLocaleString()} (수정됨)`
-                            : `작성일: ${
-                                post.createdAt?.toDate
-                                    ? post.createdAt.toDate().toLocaleString()
-                                    : '로딩중...'
-                            }`}
-                    </Text>
+                    <View style={styles.metaRow}>
+                        <Text style={styles.metaLeft}>
+                            작성자: {author}
+                            {"\n"}
+                            {post.updatedAt &&
+                            post.updatedAt?.toDate &&
+                            post.updatedAt.toDate().getTime() !==
+                            post.createdAt?.toDate()?.getTime()
+                                ? `작성일: ${post.updatedAt.toDate().toLocaleString()} (수정됨)`
+                                : `작성일: ${
+                                    post.createdAt?.toDate
+                                        ? post.createdAt.toDate().toLocaleString()
+                                        : "로딩중..."
+                                }`}
+                        </Text>
+                        <Text style={styles.metaRight}>조회수 {post.views ?? 0}</Text>
+                    </View>
                     {post.imageUrl ? (
                         <Image source={{ uri: post.imageUrl }} style={styles.image} />
                     ) : null}
@@ -292,7 +295,7 @@ export default function PostDetailScreen({ route }: any) {
 
             {/* 댓글 헤더 + 작성 */}
             <View style={styles.commentHeaderBox}>
-                <Text style={styles.commentHeader}>댓글</Text>
+                <Text style={styles.commentHeader}>댓글 ({post?.commentCount ?? 0})</Text>
                 <TouchableOpacity onPress={() => setShowInput(!showInput)}>
                     <Text style={styles.commentBtn}>작성</Text>
                 </TouchableOpacity>
@@ -570,11 +573,23 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         color: "black",
     },
-    meta: {
+    metaRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 10,
+    },
+    metaLeft: {
         fontSize: 12,
         color: "#777",
-        marginBottom: 10,
         lineHeight: 18,
+        flex: 1,
+    },
+    metaRight: {
+        fontSize: 12,
+        color: "#777",
+        fontWeight: "400",
+        marginLeft: 10,
     },
     content: {
         fontSize: 15,

@@ -125,11 +125,15 @@ export default function PostListScreen({ navigation }: any) {
     const renderItem = ({ item }: { item: Post }) => {
         const createdAt = item.createdAt?.toDate
             ? item.createdAt.toDate().toLocaleString()
-            : '';
+            : "";
+        const updatedAt = item.updatedAt?.toDate
+            ? item.updatedAt.toDate().toLocaleString()
+            : null;
+
         return (
             <TouchableOpacity
                 style={styles.card}
-                onPress={() => navigation.navigate('PostDetail', { postId: item.id })}
+                onPress={() => navigation.navigate("PostDetail", { postId: item.id })}
             >
                 {/* 썸네일 */}
                 {item.imageUrl ? (
@@ -146,14 +150,18 @@ export default function PostListScreen({ navigation }: any) {
                         {item.title}
                     </Text>
                     <Text style={styles.meta}>
-                        {item.nickname} · 댓글 {item.commentCount ?? 0} · 조회수{' '}
-                        {item.views ?? 0}
+                        {item.nickname} · 댓글 {item.commentCount ?? 0} · 조회수 {item.views ?? 0}
                     </Text>
-                    <Text style={styles.meta}>작성일 : {createdAt}</Text>
+                    <Text style={styles.meta}>
+                        작성일 : {updatedAt ? `${updatedAt} (수정됨)` : createdAt}
+                    </Text>
                 </View>
             </TouchableOpacity>
         );
     };
+
+
+
 
     return (
         <View style={styles.container}>
