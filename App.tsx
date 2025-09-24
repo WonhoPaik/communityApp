@@ -6,10 +6,11 @@ import { useAuth } from "./src/hooks/useAuth";
 import { enableScreens } from 'react-native-screens';
 import {ActivityIndicator, View} from "react-native";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { WEB_CLIENT_ID } from '@env';
 enableScreens(true);
 
 GoogleSignin.configure({
-    webClientId: '36219996357-jqj9qh8f2mmf3cir8ft7q0jg7734s35k.apps.googleusercontent.com',
+    webClientId: WEB_CLIENT_ID,
 });
 
 export default function App() {
