@@ -13,9 +13,9 @@ GoogleSignin.configure({
 });
 
 export default function App() {
-    const { user, loading } = useAuth();
+    const { user, initializing } = useAuth();
 
-    if (loading) {
+    if (initializing) {
         return (
             <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                 <ActivityIndicator size="large" />
