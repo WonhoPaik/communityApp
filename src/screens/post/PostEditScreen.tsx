@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {ActivityIndicator, StyleSheet, View} from "react-native";
+import {ActivityIndicator, View} from "react-native";
 import firestore from "@react-native-firebase/firestore";
 import PostForm from "../../components/PostForm";
 import storage from "@react-native-firebase/storage";
-import {Post} from "../../types/types.ts";
+import { FormData , Post } from "../../types/types.ts";
 import ConfirmModal from "../../components/ConfirmModal";
-interface EditData {
-    title: string;
-    content: string;
-    image: { uri: string; fileName?: string } | null;
-}
+import CommonStyles from "../../styles/commonStyles.ts";
 
 export default function PostEditScreen({ route }: any) {
     const { postId } = route.params;
@@ -34,7 +30,7 @@ export default function PostEditScreen({ route }: any) {
     }, [postId]);
 
     // 수정 저장 (기존 이미지 삭제)
-    const handleSave = async (data: EditData) => {
+    const handleSave = async (data: FormData) => {
         setLoading(true);
         try {
             let imageUrl = post?.imageUrl || "";
@@ -89,7 +85,7 @@ export default function PostEditScreen({ route }: any) {
             />
             {/* 로딩 표시 */}
             {loading && (
-                <View style={styles.loadingOverlay}>
+                <View style={CommonStyles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#2c7dd1" />
                 </View>
             )}
@@ -103,11 +99,3 @@ export default function PostEditScreen({ route }: any) {
         </>
     );
 }
-const styles = StyleSheet.create({
-    loadingOverlay: {
-        ...StyleSheet.absoluteFillObject,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "rgba(0,0,0,0.2)",
-    },
-});

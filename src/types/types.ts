@@ -15,6 +15,13 @@ export interface Post {
     commentCount: number;                                   // 댓글수
 }
 
+// 게시글 작성/수정 시 폼 데이터
+export interface FormData {
+    title: string;                                          // 게시글 제목
+    content: string;                                        // 게시글 내용
+    image: { uri: string; fileName?: string } | null;       // 이미지 주소
+}
+
 // 댓글(Comment)
 export interface Comment {
     id: string;                                              // 댓글 ID
@@ -23,6 +30,8 @@ export interface Comment {
     nickname?: string;                                       // 댓글 작성자 닉네임
     createdAt: FirebaseFirestoreTypes.Timestamp | null;      // 댓글 작성일
     updatedAt?: FirebaseFirestoreTypes.Timestamp | null;     // 댓글 수정일
+    parentId: string | null;                                 // 부모 댓글 아이디(대댓용)
+    isDeleted?: boolean;                                     // 삭제 여부
 }
 
 // 유저(User)

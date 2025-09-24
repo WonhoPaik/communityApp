@@ -128,7 +128,10 @@ export default function PostForm({
 }
 
 const styles = StyleSheet.create({
+    // 컨테이너
     container: { flex: 1, backgroundColor: "#fff", padding: 20 },
+
+    // 입력 필드
     label: {
         fontSize: 14,
         fontWeight: "600",
@@ -147,7 +150,12 @@ const styles = StyleSheet.create({
         color: "#333",
         backgroundColor: "#f9fbff",
     },
-    contentInput: { height: 120, textAlignVertical: "top" },
+    contentInput: {
+        height: 120,
+        textAlignVertical: "top",
+    },
+
+    // 이미지
     preview: {
         width: "100%",
         height: 200,
@@ -155,6 +163,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 10,
     },
+
+    // 버튼
     pickBtn: {
         backgroundColor: "#e6f0fa",
         paddingVertical: 12,
@@ -162,7 +172,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginBottom: 12,
     },
-    pickBtnText: { color: "#2c7dd1", fontWeight: "600", fontSize: 14 },
+    pickBtnText: {
+        color: "#2c7dd1",
+        fontWeight: "600",
+        fontSize: 14,
+    },
     submitBtn: {
         backgroundColor: "#2c7dd1",
         paddingVertical: 14,
@@ -170,9 +184,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 10,
     },
-    submitBtnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+    submitBtnText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "600",
+    },
     disabledBtn: {
         opacity: 0.6,
     },
-    error: { color: "red", marginBottom: 10 },
+
+    // 에러
+    error: {
+        color: "red",
+        marginBottom: 10,
+    },
 });
