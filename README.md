@@ -16,3 +16,9 @@ React Native와 Firebase 기반으로 구현한 **커뮤니티 앱**입니다.
 - TypeScript
 - Firebase (Auth, Firestore, Storage)
 - React Navigation
+
+## Demo
+-IOS
+<video src="https://github.com/user-attachments/assets/32151bba-d07c-4a6c-b57b-a120b4451afa" controls></video>
+-Android
+<video src="https://github.com/user-attachments/assets/cb20b9b3-5724-4d98-adc1-aea7d6f588bc" controls></video>
